@@ -4,6 +4,9 @@
 [Bb]uild/
 [Bb]uilds/
 Assets/AssetStoreTools*
+BayatGames
+Packages
+Knight Files
 
 # Visual Studio cache directory
 .vs/
