@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
 
     bool jump = false;
 
+    bool isRunning = false;
+
     void Start()
     {
         
@@ -32,6 +34,15 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("isJumping", true);
         }
 
+        if (Input.GetAxisRaw("Fire1") > 0.01)
+        {
+            isRunning = true;
+        }
+        else
+        {
+            isRunning = false;
+        }
+
     }
 
     public void onLanding()
@@ -41,7 +52,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
+        float modifiedSpeed = horizontalMove;
+
+        if (isRunning) modifiedSpeed *= 1.5f;
+
+        controller.Move(modifiedSpeed * Time.fixedDeltaTime, false, jump, isRunning&&(horizontalMove != 0)?true:false);
         jump = false;
 
     }
