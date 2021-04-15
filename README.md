@@ -1,0 +1,1 @@
+This repository contains files for a software development project at the Faculty of Electrical Engineering and Computing in Zagreb. It's a work in progress and this file might get updated down the line.
