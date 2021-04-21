@@ -8,6 +8,10 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController2D controller;
     public Animator animator;
 
+    public AudioSource trc;
+    public AudioSource skoc;
+    public AudioSource skup;
+
     public float runSpeed = 40f;
 
     float horizontalMove = 0f;
@@ -24,6 +28,13 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(ScoreManager.instance.isAlive == false)
+        {
+            horizontalMove = 0;
+            jump = false;
+            animator.SetBool("isAlive", false);
+            return;
+        }
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
@@ -32,15 +43,25 @@ public class PlayerMovement : MonoBehaviour
         {
             jump = true;
             animator.SetBool("isJumping", true);
+            trc.Stop();
+            skoc.Play();
         }
 
-        if (Input.GetAxisRaw("Fire1") > 0.01)
+        if (Input.GetAxisRaw("Fire1") > 0.01)   //Now it's sneaking, but all papameter names are left unchanged
         {
             isRunning = true;
         }
         else
         {
             isRunning = false;
+        }
+
+        if(horizontalMove != 0)
+        {
+            if (!trc.isPlaying && !skoc.isPlaying)
+            {
+                trc.Play();
+            }
         }
 
     }

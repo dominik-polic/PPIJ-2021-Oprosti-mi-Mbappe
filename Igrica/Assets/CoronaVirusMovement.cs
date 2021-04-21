@@ -11,6 +11,7 @@ public class CoronaVirusMovement : MonoBehaviour
     public Transform coronaVirus;
     public Transform coronaVirusHover;
     public float minimalDistanceToFollow;
+    public float damage;
 
 
     void Start()
@@ -35,6 +36,14 @@ public class CoronaVirusMovement : MonoBehaviour
         else
         {
             aiSetter.target = coronaVirusHover;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            ScoreManager.instance.DoDamage(damage);            
         }
     }
 }
