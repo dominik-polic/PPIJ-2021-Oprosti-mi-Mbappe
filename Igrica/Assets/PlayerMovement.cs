@@ -49,11 +49,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetAxisRaw("Fire1") > 0.01)   //Now it's sneaking, but all papameter names are left unchanged
         {
-            isRunning = true;
+            isRunning = false;
         }
         else
         {
-            isRunning = false;
+            isRunning = true;
         }
 
         if(horizontalMove != 0)
@@ -86,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (isRunning) modifiedSpeed *= 1.5f;
 
-        controller.Move(modifiedSpeed * Time.fixedDeltaTime, false, jump, isRunning&&(horizontalMove != 0)?true:false);
+        controller.Move(modifiedSpeed * Time.fixedDeltaTime, false, jump, isRunning); //&&(horizontalMove != 0)?true:false);
         jump = false;
 
     }
