@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using UnityStandardAssets.CrossPlatformInput;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -38,12 +38,12 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("isAlive", false);
             return;
         }
-        //horizontalMove = CrossPlatformInputManager.GetAxis("Horizontal") * runSpeed;
-        horizontalMove = Input.GetAxis("Horizontal") * runSpeed;
+        horizontalMove = ((Mathf.Abs(CrossPlatformInputManager.GetAxis("Horizontal"))>0.01)?1:0)* runSpeed * (CrossPlatformInputManager.GetAxis("Horizontal")<0?-1:1);
+        //horizontalMove = Input.GetAxis("Horizontal") * runSpeed;
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
-        //if (CrossPlatformInputManager.GetButtonDown("Jump"))
-        if (Input.GetButtonDown("Jump"))
+        if (CrossPlatformInputManager.GetButtonDown("Jump"))
+        //if (Input.GetButtonDown("Jump"))
         {
             jump = true;
             animator.SetBool("isJumping", true);
@@ -51,8 +51,8 @@ public class PlayerMovement : MonoBehaviour
             skoc.Play();
         }
 
-        //if (CrossPlatformInputManager.GetAxis("Fire1") > 0.01)   //Now it's sneaking, but all papameter names are left unchanged
-        if (Input.GetAxis("Fire1") > 0.01)   //Now it's sneaking, but all papameter names are left unchanged
+        if (CrossPlatformInputManager.GetAxis("Fire1") > 0.01)   //Now it's sneaking, but all papameter names are left unchanged
+        //if (Input.GetAxis("Fire1") > 0.01)   //Now it's sneaking, but all papameter names are left unchanged
 
             {
                 isRunning = !invertRunning;

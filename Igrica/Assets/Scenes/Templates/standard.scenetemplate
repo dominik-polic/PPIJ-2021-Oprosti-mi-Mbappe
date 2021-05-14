@@ -13,22 +13,8 @@ MonoBehaviour:
   m_Name: standard
   m_EditorClassIdentifier: 
   templateScene: {fileID: 102900000, guid: 0caf15f3f650073488d022fde7f2f21e, type: 3}
-  templateName: STANDARD SCENE TEMPLATE
-  description: 'This template includes:
-
-    Player with jumping, moving, sneaking...
-
-    Collectable
-    DNA
-
-    Damage doing spikes
-
-    Damage doing Corona virus
-
-    Portal to another
-    scene (level)
-
-    Templated by Domy ;)'
+  templateName: std_V1
+  description: deprecated
   preview: {fileID: 0}
   dependencies:
   - dependency: {fileID: 2800000, guid: b83ee0843c14a6242a07b0399c588ef9, type: 3}
@@ -178,4 +164,4 @@ MonoBehaviour:
   - dependency: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
     instantiationMode: 1
   templatePipeline: {fileID: 0}
-  addToDefaults: 1
+  addToDefaults: 0
