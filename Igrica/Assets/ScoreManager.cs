@@ -16,7 +16,6 @@ public class ScoreManager : MonoBehaviour
     public AudioSource kaslj;
     public AudioSource crk;
     public bool isAlive = true;
-
     public Animator animator;
 
 
@@ -74,5 +73,12 @@ public class ScoreManager : MonoBehaviour
             textHealth.text = "" + health.ToString();
         }
         
+    }
+
+    public void enterPortal(string level)
+    {
+        //TODO maybe not allow if not enough coins collected(?)
+        SceneManager.LoadScene(level);
+
     }
 }

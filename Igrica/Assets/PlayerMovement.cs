@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
 
     bool isRunning = false;
 
+    bool invertRunning = false;
+
     void Start()
     {
         
@@ -35,10 +38,11 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("isAlive", false);
             return;
         }
-        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
-
+        //horizontalMove = CrossPlatformInputManager.GetAxis("Horizontal") * runSpeed;
+        horizontalMove = Input.GetAxis("Horizontal") * runSpeed;
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
+        //if (CrossPlatformInputManager.GetButtonDown("Jump"))
         if (Input.GetButtonDown("Jump"))
         {
             jump = true;
@@ -47,13 +51,17 @@ public class PlayerMovement : MonoBehaviour
             skoc.Play();
         }
 
-        if (Input.GetAxisRaw("Fire1") > 0.01)   //Now it's sneaking, but all papameter names are left unchanged
-        {
-            isRunning = false;
+        //if (CrossPlatformInputManager.GetAxis("Fire1") > 0.01)   //Now it's sneaking, but all papameter names are left unchanged
+        if (Input.GetAxis("Fire1") > 0.01)   //Now it's sneaking, but all papameter names are left unchanged
+
+            {
+                isRunning = !invertRunning;
+                animator.SetBool("isSlow", invertRunning);
         }
         else
         {
-            isRunning = true;
+            isRunning = invertRunning;
+            animator.SetBool("isSlow", !invertRunning);
         }
 
         if(horizontalMove != 0)

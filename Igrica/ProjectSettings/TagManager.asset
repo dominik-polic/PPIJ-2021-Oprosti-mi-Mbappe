@@ -49,6 +49,9 @@ TagManager:
   - name: Player
     uniqueID: 176142075
     locked: 0
+  - name: Hidden Level
+    uniqueID: 2802338813
+    locked: 0
   - name: Foreground
     uniqueID: 3784984393
     locked: 0
