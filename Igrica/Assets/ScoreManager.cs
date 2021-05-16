@@ -9,29 +9,46 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager instance;
     public TextMeshProUGUI textCoins;
     public TextMeshProUGUI textHealth;
+    public TextMeshProUGUI textScore;
     int score;
     float health = 100f;
     public int totalCoins = 10;
     public AudioSource skup;
     public AudioSource kaslj;
     public AudioSource crk;
+    public AudioSource deathMusic;
+    public AudioSource backgroundMusic;
     public bool isAlive = true;
     public Animator animator;
+    public string levelPrefsName;
 
+    int unlocked = 1;
+
+    string HIGHSCORE = "HIGHSCORE_CURRENT";
+    string SCORE = "SCORE_CURRENT";
+
+    int totalScore = 0;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        totalScore = PlayerPrefs.GetInt(SCORE);
+        textScore.text = totalScore.ToString();            
+
+        PlayerPrefs.SetInt(levelPrefsName, unlocked);
         if (instance == null) instance = this;
         textCoins.text = "0/" + totalCoins.ToString();
     }
 
     public void ChangeScore(int coinValue)
     {
+        skup.Play();
         score += coinValue;
         textCoins.text = score.ToString() + "/"+totalCoins.ToString();
-        skup.Play();
+        totalScore += 10;
+        PlayerPrefs.SetInt(SCORE, totalScore);
+        textScore.text = totalScore.ToString();
     }
 
     IEnumerator ExecuteAfterTime(float time)
@@ -43,7 +60,7 @@ public class ScoreManager : MonoBehaviour
 
     IEnumerator ResetSceneAfterAnimation()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(16);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -62,11 +79,22 @@ public class ScoreManager : MonoBehaviour
         if (health <= 0)
         {
             health = 0;
-            //Crk
-            textHealth.text = "CRK!";
-            crk.Play();
-            isAlive = false;
-            StartCoroutine(ResetSceneAfterAnimation());
+            //Crk            
+            if (isAlive == true) {
+                textHealth.text = "CRK!";
+                isAlive = false;
+                backgroundMusic.Stop();
+                crk.Play();
+                deathMusic.Play();
+
+                if(totalScore > PlayerPrefs.GetInt(HIGHSCORE))
+                {
+                    PlayerPrefs.SetInt(HIGHSCORE, totalScore);
+                    PlayerPrefs.SetInt(SCORE, 0);
+                }
+
+                StartCoroutine(ResetSceneAfterAnimation());
+            }
         }
         else
         {

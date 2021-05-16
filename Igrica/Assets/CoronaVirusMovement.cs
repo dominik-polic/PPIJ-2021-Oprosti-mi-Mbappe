@@ -18,6 +18,8 @@ public class CoronaVirusMovement : MonoBehaviour
     public float damagePeriod = 20f;
     private float nextDamage = .0f;
 
+    public bool isEnabled = true;
+
 
     void Start()
     {
@@ -34,7 +36,7 @@ public class CoronaVirusMovement : MonoBehaviour
     {
         float distanceToPlayer = Vector3.Distance(player.position, coronaVirus.position);
         //Debug.Log(distanceToPlayer);
-        if(distanceToPlayer < minimalDistanceToFollow)
+        if(distanceToPlayer < minimalDistanceToFollow && isEnabled)
         {
             aiSetter.target = player;
         }

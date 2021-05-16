@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     public AudioSource skoc;
     public AudioSource skup;
 
+    public bool useTouchUI = false;
+
     public float runSpeed = 40f;
 
     float horizontalMove = 0f;
@@ -23,9 +25,20 @@ public class PlayerMovement : MonoBehaviour
 
     bool invertRunning = false;
 
+    public Canvas touchUICanvas;
+
     void Start()
     {
-        
+        if (!useTouchUI)
+        {
+            touchUICanvas.enabled = false;
+        }
+        else
+        {
+            CrossPlatformInputManager.SetAxisZero("Fire1");
+            CrossPlatformInputManager.SetAxisZero("Horizontal");
+            CrossPlatformInputManager.SetButtonUp("Jump");
+        }
     }
 
     // Update is called once per frame
@@ -38,12 +51,28 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("isAlive", false);
             return;
         }
-        horizontalMove = ((Mathf.Abs(CrossPlatformInputManager.GetAxis("Horizontal"))>0.01)?1:0)* runSpeed * (CrossPlatformInputManager.GetAxis("Horizontal")<0?-1:1);
-        //horizontalMove = Input.GetAxis("Horizontal") * runSpeed;
+        if (useTouchUI)
+        {
+            horizontalMove = ((Mathf.Abs(CrossPlatformInputManager.GetAxis("Horizontal")) > 0.01) ? 1 : 0) * runSpeed * (CrossPlatformInputManager.GetAxis("Horizontal") < 0 ? -1 : 1);
+        }
+        else
+        {
+            horizontalMove = Input.GetAxis("Horizontal") * runSpeed;
+        }
+
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
-        if (CrossPlatformInputManager.GetButtonDown("Jump"))
-        //if (Input.GetButtonDown("Jump"))
+        bool tempif;
+        if (useTouchUI)
+        {
+            tempif = (CrossPlatformInputManager.GetButtonDown("Jump"));
+        }
+        else
+        {
+            tempif = (Input.GetButtonDown("Jump"));
+        }
+
+        if(tempif)
         {
             jump = true;
             animator.SetBool("isJumping", true);
@@ -51,10 +80,17 @@ public class PlayerMovement : MonoBehaviour
             skoc.Play();
         }
 
-        if (CrossPlatformInputManager.GetAxis("Fire1") > 0.01)   //Now it's sneaking, but all papameter names are left unchanged
-        //if (Input.GetAxis("Fire1") > 0.01)   //Now it's sneaking, but all papameter names are left unchanged
+        bool tempif2;
+        if (useTouchUI) {
+            tempif2 = (CrossPlatformInputManager.GetAxis("Fire1") > 0.01);   //Now it's sneaking, but all papameter names are left unchanged
+        }
+        else
+        {
+            tempif2 = (Input.GetAxis("Fire1") > 0.01);   //Now it's sneaking, but all papameter names are left unchanged
+        }
 
-            {
+        if(tempif2)
+        {
                 isRunning = !invertRunning;
                 animator.SetBool("isSlow", invertRunning);
         }
