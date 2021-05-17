@@ -1734,7 +1734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_JumpForce: 600
-  m_CrouchSpeed: 0.36
+  m_CrouchSpeed: 1
   m_MovementSmoothing: 0.04
   m_AirControl: 1
   m_WhatIsGround:
@@ -1816,7 +1816,6 @@ MonoBehaviour:
   trc: {fileID: 2927126993721059521}
   skoc: {fileID: 3904917909121510191}
   skup: {fileID: 0}
-  useTouchUI: 0
   runSpeed: 30
   touchUICanvas: {fileID: 982000120548216488}
 --- !u!95 &8840745986760024430
