@@ -3232,7 +3232,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5df119565a6776d41a85545892ac3e6c, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -144470,6 +144470,14 @@ PrefabInstance:
     - target: {fileID: 127537210437841671, guid: 13ec4ecc013c7d34184afa212f8dc722, type: 3}
       propertyPath: m_Name
       value: MainLevelSystem
+      objectReference: {fileID: 0}
+    - target: {fileID: 365443391182011543, guid: 13ec4ecc013c7d34184afa212f8dc722, type: 3}
+      propertyPath: totalCoins
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 365443391182011543, guid: 13ec4ecc013c7d34184afa212f8dc722, type: 3}
+      propertyPath: levelPrefsName
+      value: LVL1_UNLOCKED
       objectReference: {fileID: 0}
     - target: {fileID: 5377908873101367310, guid: 13ec4ecc013c7d34184afa212f8dc722, type: 3}
       propertyPath: m_RootOrder

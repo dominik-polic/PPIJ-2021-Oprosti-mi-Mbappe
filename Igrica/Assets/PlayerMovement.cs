@@ -51,8 +51,7 @@ public class PlayerMovement : MonoBehaviour
         if(ScoreManager.instance.isAlive == false)
         {
             horizontalMove = 0;
-            jump = false;
-            animator.SetBool("isAlive", false);
+            jump = false;            
             return;
         }
         if (useTouchUI)

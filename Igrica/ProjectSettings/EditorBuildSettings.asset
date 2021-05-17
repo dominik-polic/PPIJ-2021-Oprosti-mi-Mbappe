@@ -6,11 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/Scenes/Spring_rona_chase.unity
-    guid: 3255b51f2730298459594674a604c756
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/UI/Main.unity
     guid: 912db82d8b4510e478f730f5e9566b55
@@ -38,6 +38,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/LVL_6.unity
     guid: 17fd973683113a340ac4db6b22db3818
+  - enabled: 1
+    path: Assets/Scenes/Levels/LVL_7.unity
+    guid: 1d66182fe95d6394d989b7bee80e34ac
   - enabled: 1
     path: Assets/Scenes/Levels/LVL_SECRET_1.unity
     guid: a12b0e52166938b4187b3ac5f59f94fe

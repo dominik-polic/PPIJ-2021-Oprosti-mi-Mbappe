@@ -7,6 +7,7 @@ public class ScoreUpdater : MonoBehaviour
 {
     string HIGHSCORE = "HIGHSCORE_CURRENT";
     string SCORE = "SCORE_CURRENT";
+    string REMAINING_LIVES = "REMAINING_LIVES";
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,7 @@ public class ScoreUpdater : MonoBehaviour
                 PlayerPrefs.SetInt(HIGHSCORE, newScore);
         }
         PlayerPrefs.SetInt(SCORE, 0);
+        PlayerPrefs.SetInt(REMAINING_LIVES, 3);
         string highscore = "High score: ";
         if (!PlayerPrefs.HasKey(HIGHSCORE))
             PlayerPrefs.SetInt(HIGHSCORE, 0);

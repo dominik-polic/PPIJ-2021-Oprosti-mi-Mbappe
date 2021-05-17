@@ -10,7 +10,9 @@ public class ScoreManager : MonoBehaviour
     public TextMeshProUGUI textCoins;
     public TextMeshProUGUI textHealth;
     public TextMeshProUGUI textScore;
+    public TextMeshProUGUI textLives;
     int score;
+    int lives = 3;
     float health = 100f;
     public int totalCoins = 10;
     public AudioSource skup;
@@ -21,14 +23,19 @@ public class ScoreManager : MonoBehaviour
     public bool isAlive = true;
     public Animator animator;
     public string levelPrefsName;
+    public Transform player;
+    private Vector3 startingPos;
 
     int unlocked = 1;
 
     string HIGHSCORE = "HIGHSCORE_CURRENT";
     string SCORE = "SCORE_CURRENT";
     string CRK_ENABLED = "CRK_ENABLED";
+    string REMAINING_LIVES = "REMAINING_LIVES";
     int DISABLED = 0;
     int ENABLED = 1;
+
+    private bool isShielded = false;
 
 
     int totalScore = 0;
@@ -37,11 +44,17 @@ public class ScoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        totalScore = PlayerPrefs.GetInt(SCORE);
-        textScore.text = totalScore.ToString();            
-
-        PlayerPrefs.SetInt(levelPrefsName, unlocked);
         if (instance == null) instance = this;
+        startingPos = player.position;
+        if (!PlayerPrefs.HasKey(REMAINING_LIVES))
+        {
+            PlayerPrefs.SetInt(REMAINING_LIVES, 3);
+        }
+        lives = PlayerPrefs.GetInt(REMAINING_LIVES);
+        totalScore = PlayerPrefs.GetInt(SCORE);
+        textScore.text = totalScore.ToString();
+        textLives.text = lives.ToString();
+        PlayerPrefs.SetInt(levelPrefsName, unlocked);        
         textCoins.text = "0/" + totalCoins.ToString();
     }
 
@@ -65,11 +78,28 @@ public class ScoreManager : MonoBehaviour
     IEnumerator ResetSceneAfterAnimation(int seconds)
     {
         yield return new WaitForSeconds(seconds);
+        lives = 3;
+        textLives.text = lives.ToString();
+        PlayerPrefs.SetInt(REMAINING_LIVES, lives);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    IEnumerator ResetPlayerAfterAnimation(int seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        player.position = startingPos;
+        animator.SetBool("isAlive", true);
+        health = 100;
+        isAlive = true;
+        isShielded = true;
+        yield return new WaitForSeconds(3);
+        isShielded = false;
     }
 
     public void DoDamage(float damage)
     {
+        if (!isAlive || isShielded) return;
+
         if (health > 0)
         {
             health -= damage;
@@ -87,25 +117,37 @@ public class ScoreManager : MonoBehaviour
             if (isAlive == true) {
                 textHealth.text = "CRK!";
                 isAlive = false;
-                backgroundMusic.Stop();
+                animator.SetBool("isAlive", false);
                 crk.Play();
 
-                if (totalScore > PlayerPrefs.GetInt(HIGHSCORE))
+                if (lives > 1)
                 {
-                    PlayerPrefs.SetInt(HIGHSCORE, totalScore);
-                    PlayerPrefs.SetInt(SCORE, 0);
-                }
-
-                if (PlayerPrefs.GetInt(CRK_ENABLED) != DISABLED)
-                {
-                    deathMusic.Play();
-                    StartCoroutine(ResetSceneAfterAnimation(16));
+                    lives--;
+                    textLives.text = lives.ToString();
+                    PlayerPrefs.SetInt(REMAINING_LIVES, lives);
+                    StartCoroutine(ResetPlayerAfterAnimation(1));
                 }
                 else
                 {
-                    StartCoroutine(ResetSceneAfterAnimation(1));
-                }
 
+                    if (totalScore > PlayerPrefs.GetInt(HIGHSCORE))
+                    {
+                        PlayerPrefs.SetInt(HIGHSCORE, totalScore);                        
+                    }
+                    PlayerPrefs.SetInt(SCORE, 0);
+                    score = 0;
+
+                    if (PlayerPrefs.GetInt(CRK_ENABLED) != DISABLED)
+                    {
+                        backgroundMusic.Stop();
+                        deathMusic.Play();
+                        StartCoroutine(ResetSceneAfterAnimation(16));
+                    }
+                    else
+                    {
+                        StartCoroutine(ResetSceneAfterAnimation(1));
+                    }
+                }
                 
             }
         }
