@@ -13,9 +13,12 @@ public class PlayerMovement : MonoBehaviour
     public AudioSource skoc;
     public AudioSource skup;
 
-    public bool useTouchUI = false;
+    bool useTouchUI = true;
 
     public float runSpeed = 40f;
+
+    string TOUCH_ENABLED = "TOUCH_ENABLED";
+    int DISABLED = 0;
 
     float horizontalMove = 0f;
 
@@ -29,8 +32,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        if (!useTouchUI)
+        if (PlayerPrefs.GetInt(TOUCH_ENABLED) == DISABLED)
         {
+            useTouchUI = false;
             touchUICanvas.enabled = false;
         }
         else

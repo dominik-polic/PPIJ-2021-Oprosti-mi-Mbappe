@@ -26,6 +26,10 @@ public class ScoreManager : MonoBehaviour
 
     string HIGHSCORE = "HIGHSCORE_CURRENT";
     string SCORE = "SCORE_CURRENT";
+    string CRK_ENABLED = "CRK_ENABLED";
+    int DISABLED = 0;
+    int ENABLED = 1;
+
 
     int totalScore = 0;
 
@@ -58,9 +62,9 @@ public class ScoreManager : MonoBehaviour
         animator.SetBool("isHurt",false);
     }
 
-    IEnumerator ResetSceneAfterAnimation()
+    IEnumerator ResetSceneAfterAnimation(int seconds)
     {
-        yield return new WaitForSeconds(16);
+        yield return new WaitForSeconds(seconds);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -85,15 +89,24 @@ public class ScoreManager : MonoBehaviour
                 isAlive = false;
                 backgroundMusic.Stop();
                 crk.Play();
-                deathMusic.Play();
 
-                if(totalScore > PlayerPrefs.GetInt(HIGHSCORE))
+                if (totalScore > PlayerPrefs.GetInt(HIGHSCORE))
                 {
                     PlayerPrefs.SetInt(HIGHSCORE, totalScore);
                     PlayerPrefs.SetInt(SCORE, 0);
                 }
 
-                StartCoroutine(ResetSceneAfterAnimation());
+                if (PlayerPrefs.GetInt(CRK_ENABLED) != DISABLED)
+                {
+                    deathMusic.Play();
+                    StartCoroutine(ResetSceneAfterAnimation(16));
+                }
+                else
+                {
+                    StartCoroutine(ResetSceneAfterAnimation(1));
+                }
+
+                
             }
         }
         else
