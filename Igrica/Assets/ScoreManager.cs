@@ -33,7 +33,7 @@ public class ScoreManager : MonoBehaviour
     string CRK_ENABLED = "CRK_ENABLED";
     string REMAINING_LIVES = "REMAINING_LIVES";
     int DISABLED = 0;
-    int ENABLED = 1;
+    //int ENABLED = 1;
 
     private bool isShielded = false;
 
