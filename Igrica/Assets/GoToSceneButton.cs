@@ -28,12 +28,15 @@ public class GoToSceneButton : MonoBehaviour
             stisk.Play();
             yield return new WaitWhile(() => stisk.isPlaying);
         }
-        if (sceneName != "NEXT_LVL" || !PlayerPrefs.HasKey(NEXT_LVL))
+        if (sceneName != "NEXT_LVL")
         {
             SceneManager.LoadScene(sceneName);
         }
         else
         {
+            if (!PlayerPrefs.HasKey(NEXT_LVL))
+                PlayerPrefs.SetString(NEXT_LVL, "LVL_1");
+
             SceneManager.LoadScene(PlayerPrefs.GetString(NEXT_LVL));
         }
 

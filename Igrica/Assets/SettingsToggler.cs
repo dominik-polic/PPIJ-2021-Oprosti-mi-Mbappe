@@ -31,6 +31,13 @@ public class SettingsToggler : MonoBehaviour
 
     public void togglePref()
     {
+        stisk.Play();
+        if (settingKey == "RESET_ALL")
+        {
+            PlayerPrefs.DeleteAll();
+            return;
+        }
+        
         if (PlayerPrefs.GetInt(settingKey) != ENABLED)
         {
             PlayerPrefs.SetInt(settingKey, ENABLED);
@@ -41,7 +48,7 @@ public class SettingsToggler : MonoBehaviour
             PlayerPrefs.SetInt(settingKey, DISABLED);
             GetComponent<Image>().color = Color.grey;
         }
-        stisk.Play();
+        
 
     }
 
