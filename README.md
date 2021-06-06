@@ -6,3 +6,5 @@ This repository contains files for a software development project at the Faculty
   
  - WebGL ([Itch.io](https://dominik-polic.itch.io/trch)) ([Standalone](https://trchskoch.web.app/))  
 [![Itch QR code](/Images/qr-itchio-small.png)](https://dominik-polic.itch.io/trch)
+
+ - Windows ([Downloadable zip](https://drive.google.com/file/d/1oCMXTLGGahf2hA3pdX1er8zfWx-l2hHC/view?usp=sharing))
