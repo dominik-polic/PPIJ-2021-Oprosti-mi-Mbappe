@@ -4,5 +4,5 @@ This repository contains files for a software development project at the Faculty
  - Android ([Google Play Store](https://play.google.com/store/apps/details?id=com.DominikPolic.TRCh))  
 [![Play Store QR code](/Images/qr-google-play-small.png)](https://play.google.com/store/apps/details?id=com.DominikPolic.TRCh)
   
- - WebGL ([Itch.io](https://dominik-polic.itch.io/trch)) ([Standalone](https://trchskoch.web.app/))
+ - WebGL ([Itch.io](https://dominik-polic.itch.io/trch)) ([Standalone](https://trchskoch.web.app/))  
 [![Itch QR code](/Images/qr-itchio-small.png)](https://dominik-polic.itch.io/trch)
