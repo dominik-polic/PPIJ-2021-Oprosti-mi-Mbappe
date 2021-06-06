@@ -2,7 +2,7 @@ This repository contains files for a software development project at the Faculty
 
 # Game is released for following platforms:
  - Android ([Google Play Store](https://play.google.com/store/apps/details?id=com.DominikPolic.TRCh))  
-[![Play Store QR code](/Images/qr-google-play-small.png)](#)
+[![Play Store QR code](/Images/qr-google-play-small.png)](https://play.google.com/store/apps/details?id=com.DominikPolic.TRCh)
   
  - WebGL ([Itch.io](https://dominik-polic.itch.io/trch))  
-[![Itch QR code](/Images/qr-itchio-small.png)](#)
+[![Itch QR code](/Images/qr-itchio-small.png)](https://dominik-polic.itch.io/trch)
