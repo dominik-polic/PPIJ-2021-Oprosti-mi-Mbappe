@@ -90,6 +90,7 @@ public class ScoreManager : MonoBehaviour
         player.position = startingPos;
         animator.SetBool("isAlive", true);
         health = 100;
+        textHealth.text = health.ToString();
         isAlive = true;
         isShielded = true;
         yield return new WaitForSeconds(3);

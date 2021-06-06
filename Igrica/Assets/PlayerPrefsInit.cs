@@ -15,6 +15,7 @@ public class PlayerPrefsInit : MonoBehaviour
     {
         if (!PlayerPrefs.HasKey(PREFS_INIT_VERSION))
         {
+            PlayerPrefs.SetInt(PREFS_INIT_VERSION,1);
             PlayerPrefs.SetInt(TOUCH_ENABLED, 1);
             PlayerPrefs.SetString(NEXT_LVL, "LVL_1");
             PlayerPrefs.SetInt(CRK_ENABLED, 1);
