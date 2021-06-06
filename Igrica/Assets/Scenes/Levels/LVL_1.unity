@@ -144471,6 +144471,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainLevelSystem
       objectReference: {fileID: 0}
+    - target: {fileID: 173979333620298866, guid: 13ec4ecc013c7d34184afa212f8dc722, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 365443391182011543, guid: 13ec4ecc013c7d34184afa212f8dc722, type: 3}
       propertyPath: totalCoins
       value: 30
@@ -144478,6 +144482,38 @@ PrefabInstance:
     - target: {fileID: 365443391182011543, guid: 13ec4ecc013c7d34184afa212f8dc722, type: 3}
       propertyPath: levelPrefsName
       value: LVL1_UNLOCKED
+      objectReference: {fileID: 0}
+    - target: {fileID: 805913496079115933, guid: 13ec4ecc013c7d34184afa212f8dc722, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 982000120548216488, guid: 13ec4ecc013c7d34184afa212f8dc722, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1788788080309261604, guid: 13ec4ecc013c7d34184afa212f8dc722, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2004457061280715183, guid: 13ec4ecc013c7d34184afa212f8dc722, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2725776648519054974, guid: 13ec4ecc013c7d34184afa212f8dc722, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3431431237421173404, guid: 13ec4ecc013c7d34184afa212f8dc722, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5336667448065412996, guid: 13ec4ecc013c7d34184afa212f8dc722, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345941018335600093, guid: 13ec4ecc013c7d34184afa212f8dc722, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5377908873101367310, guid: 13ec4ecc013c7d34184afa212f8dc722, type: 3}
       propertyPath: m_RootOrder
@@ -144523,6 +144559,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5505430779461641601, guid: 13ec4ecc013c7d34184afa212f8dc722, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5815051218857091986, guid: 13ec4ecc013c7d34184afa212f8dc722, type: 3}
       propertyPath: totalCoins
       value: 30
@@ -144530,6 +144570,22 @@ PrefabInstance:
     - target: {fileID: 5815051218857091986, guid: 13ec4ecc013c7d34184afa212f8dc722, type: 3}
       propertyPath: levelPrefsName
       value: LVL1_UNLOCKED
+      objectReference: {fileID: 0}
+    - target: {fileID: 6490898953501234777, guid: 13ec4ecc013c7d34184afa212f8dc722, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7027655308965997961, guid: 13ec4ecc013c7d34184afa212f8dc722, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7908202013113864664, guid: 13ec4ecc013c7d34184afa212f8dc722, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8877635102098485430, guid: 13ec4ecc013c7d34184afa212f8dc722, type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13ec4ecc013c7d34184afa212f8dc722, type: 3}
